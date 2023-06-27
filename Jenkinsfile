@@ -33,7 +33,7 @@ println ret
                       sh "git init"
                         sh "git add ."
                      //   sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.ret}'"
-                     git commit -m 'lol'
+                    sh "git commit -m 'lol'"
                         sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/kube.git HEAD:vote"
       }
     }
