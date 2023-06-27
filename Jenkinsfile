@@ -30,6 +30,7 @@ println ret
     sh "echo $env.ret"
                         sh "sed -i 's+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2.*+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2:${env.ret}+g' vote-deployment.yaml"
                         sh "cat vote-deployment.yaml"
+                      sh "git init"
                         sh "git add ."
                      //   sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.ret}'"
                      sh "git commit -m 'lol'"
