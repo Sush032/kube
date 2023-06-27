@@ -2,6 +2,8 @@ node {
   //  def app
 //def build_job = build job: "vote"
 //build_job_number = build_job.getNumber()
+  def ret = sh(script: 'cat /var/lib/jenkins/jobs/vote/nextBuildNumber', returnStdout: true)
+println ret
     stage('Clone repository') {
       
 
@@ -18,9 +20,9 @@ node {
                         sh "git config user.email sushant.sam111@gmail.com"
                         sh "git config user.name sushant"
                         //sh "git switch master"
-                      sh "cat /var/lib/jenkins/jobs/vote/nextBuildNumber"
-                        sh "DOCKERTAG=sudo cat /var/lib/jenkins/jobs/vote/nextBuildNumber"
-                      sh "echo $DOCKERTAG"
+                 //     sh "cat /var/lib/jenkins/jobs/vote/nextBuildNumber"
+                   //     sh "DOCKERTAG=sudo cat /var/lib/jenkins/jobs/vote/nextBuildNumber"
+                     // sh "echo $DOCKERTAG"
                         sh "cat vote-deployment.yaml"
     
                         sh "sed -i 's+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2.*+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2:${DOCKERTAG}+g' vote-deployment.yaml"
