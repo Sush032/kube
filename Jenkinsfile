@@ -1,6 +1,6 @@
 node {
     def app
-
+def buildNumber = Jenkins.instance.getItem('jobName').lastSuccessfulBuild.number
     stage('Clone repository') {
       
 
@@ -17,7 +17,7 @@ node {
                         sh "git config user.name sushant"
                         //sh "git switch master"
                         sh "cat vote-deployment.yaml"
-                       
+                       sh "echo $buildNumber"
                         sh "sed -i 's+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2.*+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2:${DOCKERTAG}+g' vote-deployment.yaml"
                         sh "cat vote-deployment.yaml"
                         sh "git add ."
