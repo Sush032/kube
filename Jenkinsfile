@@ -4,6 +4,9 @@ node {
 //build_job_number = build_job.getNumber()
   def ret = sh(script: 'cat /var/lib/jenkins/jobs/vote/nextBuildNumber', returnStdout: true)
 println ret
+  environment {
+  ret=cat /var/lib/jenkins/jobs/vote/nextBuildNumber
+}
     stage('Clone repository') {
       
 
