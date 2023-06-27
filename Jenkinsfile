@@ -17,7 +17,9 @@ node {
                         sh "git config user.name sushant"
                         //sh "git switch master"
                         sh "cat vote-deployment.yaml"
-                   
+                        sh "UPSTREAM=`curl "http://jenkins:8080/job/vote/lastBuild/api/xml?depth=1&xpath=/freeStyleBuild/number"`"
+                        sh  "NUMBER=`echo "$UPSTREAM" | sed "s/[^0-9]//g"`"
+                        sh "echo $NUMBER"
                         sh "sed -i 's+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2.*+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2:${DOCKERTAG}+g' vote-deployment.yaml"
                         sh "cat vote-deployment.yaml"
                         sh "git add ."
