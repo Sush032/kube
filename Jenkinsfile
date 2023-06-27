@@ -15,12 +15,12 @@ node {
                         sh "git config user.email sushant.sam111@gmail.com"
                         sh "git config user.name sushant"
                         //sh "git switch master"
-                        sh "cat result-deployment.yaml"
-                        sh "sed -i 's+abhijeetnikam1995/result.*+abhijeetnikam1995/results:${DOCKERTAG}+g' vote-deployment.yaml"
-                        sh "cat result-deployment.yaml"
+                        sh "cat vote-deployment.yaml"
+                        sh "sed -i 's+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2.*+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2:${DOCKERTAG}+g' vote-deployment.yaml"
+                        sh "cat vote-deployment.yaml"
                         sh "git add ."
                         sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                        sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/result-manifest.git HEAD:main"
+                        sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/kube.git HEAD:vote"
       }
     }
   }
