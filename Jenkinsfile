@@ -28,7 +28,7 @@ println ret
                         sh "sed -i 's+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2.*+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2:${env.ret}+g' vote-deployment.yaml"
                         sh "cat vote-deployment.yaml"
                         sh "git add ."
-                        sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
+                        sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.ret}'"
                         sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/kube.git HEAD:vote"
       }
     }
