@@ -21,7 +21,7 @@ println ret
                         sh "git config user.name sushant"
                         //sh "git switch master"
                       sh "cat /var/lib/jenkins/jobs/vote/nextBuildNumber"
-                        sh "env.DOCKERTAG=sudo cat /var/lib/jenkins/jobs/vote/nextBuildNumber"
+                        sh "export DOCKERTAG= cat /var/lib/jenkins/jobs/vote/nextBuildNumber"
                       sh "echo $DOCKERTAG"
                         sh "cat vote-deployment.yaml"
     sh "echo $env.ret"
