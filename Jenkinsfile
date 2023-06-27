@@ -24,7 +24,7 @@ println ret
                    //     sh "DOCKERTAG=sudo cat /var/lib/jenkins/jobs/vote/nextBuildNumber"
                      // sh "echo $DOCKERTAG"
                         sh "cat vote-deployment.yaml"
-    
+    sh "echo $env.ret"
                         sh "sed -i 's+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2.*+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2:${env.ret}+g' vote-deployment.yaml"
                         sh "cat vote-deployment.yaml"
                         sh "git add ."
