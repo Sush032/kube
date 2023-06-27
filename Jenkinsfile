@@ -21,6 +21,7 @@ node {
                         sh "cat vote-deployment.yaml"
                       sh "cat /var/lib/jenkins/jobs/vote/nextBuildNumber"
                         sh "DOCKERTAG=sudo cat /var/lib/jenkins/jobs/vote/nextBuildNumber"
+                      sh "echo $DOCKERTAG"
                         sh "sed -i 's+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2.*+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2:${DOCKERTAG}+g' vote-deployment.yaml"
                         sh "cat vote-deployment.yaml"
                         sh "git add ."
