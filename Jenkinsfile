@@ -1,6 +1,7 @@
 node {
     def app
-
+def build_job = build job: "vote"
+build_job_number = build_job.getNumber()
     stage('Clone repository') {
       
 
@@ -18,6 +19,7 @@ node {
                         sh "git config user.name sushant"
                         //sh "git switch master"
                         sh "cat vote-deployment.yaml"
+                        sh "echo $build_job_number"
                         sh "sed -i 's+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2.*+651233853937.dkr.ecr.us-east-1.amazonaws.com/vote-j2:${DOCKERTAG}+g' vote-deployment.yaml"
                         sh "cat vote-deployment.yaml"
                         sh "git add ."
