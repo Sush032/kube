@@ -1,7 +1,7 @@
 node {
-    def app
-def build_job = build job: "vote"
-build_job_number = build_job.getNumber()
+  //  def app
+//def build_job = build job: "vote"
+//build_job_number = build_job.getNumber()
     stage('Clone repository') {
       
 
