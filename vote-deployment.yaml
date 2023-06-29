@@ -6,7 +6,7 @@ metadata:
   name: vote-deployment
   namespace: local
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: vote
